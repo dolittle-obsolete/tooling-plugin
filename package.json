@@ -1,0 +1,59 @@
+{
+  "name": "@dolittle/tooling.plugin.tooling",
+  "description": "A Dolittle tooling plugin containing tools for developing Dolittle tools",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://dolittle.io",
+  "author": "Dolittle",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dolittle-tootls/tooling-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dolittle-tools/tooling-plugin/issues"
+  },
+  "keywords": [
+    "dolittle",
+    "tooling",
+    "plugin",
+    "runtime"
+  ],
+  "dolittle": {
+    "tooling": "7.*"
+  },
+  "files": [
+    "lib",
+    "package.json",
+    "Source/**/*.d.ts"
+  ],
+  "main": "lib/index.js",
+  "types": "Source/index.d.ts",
+  "typings": "Source/index.d.ts",
+  "scripts": {
+    "ts:cjs": "tsc -p tsconfig.json --declaration false",
+    "ts:typedefs": "tsc --outDir . --emitDeclarationOnly",
+    "ts:all": "yarn ts:cjs && yarn ts:typedefs",
+    "ts:clean": "del './*.d.ts' '**/*.d.ts' '!node_modules/**/*' lib ",
+    "build": "yarn clean && yarn ts:all",
+    "clean": "del dist && yarn ts:clean",
+    "prepublishOnly": "yarn build"
+  },
+  "dependencies": {
+    "@dolittle/tooling.common.boilerplates": "7.*",
+    "@dolittle/tooling.common.configurations": "7.*",
+    "@dolittle/tooling.common.commands": "7.*",
+    "@dolittle/tooling.common.dependencies": "7.*",
+    "@dolittle/tooling.common.files": "7.*",
+    "@dolittle/tooling.common.plugins": "7.*",
+    "@dolittle/tooling.common.logging": "7.*",
+    "@dolittle/tooling.common.utilities": "7.*"
+  },
+  "devDependencies": {
+    "@types/node": "12.0.0",
+    "del-cli": "^2.0.0",
+    "typescript": "^3.4.5"
+  }
+}
